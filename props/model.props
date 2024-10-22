@@ -1,5 +1,11 @@
 #Properties file
-stop.at = 100
-board.size = 30
-count.of.agents = 765
-threshold = 0.7
+random.seed = 1
+stop.at = 2
+count.of.agents = 1
+threshold = 0.3
+board.size = 6
+grid.buffer = 1
+
+# these must multiply to total number of processes
+proc.per.x = 2
+proc.per.y = 2

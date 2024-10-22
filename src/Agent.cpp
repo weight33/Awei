@@ -5,8 +5,15 @@
 
 Agent::Agent(repast::AgentId id, int type, double threshold): agentId(id), agentType(type), threshold(threshold) {}
 
+Agent::Agent(repast::AgentId id, int type, bool isSatisfied): agentId(id), agentType(type), isSatisfied(isSatisfied) {}
+
 Agent::~Agent() {}
 
+void Agent::set(int currentRank, int newType, bool newSatisfiedStatus) {
+	agentId.currentRank(currentRank);
+	agentType = newType;
+	isSatisfied = newSatisfiedStatus;
+}
 
 void Agent::updateStatus(repast::SharedContext<Agent>* context,
 		repast::SharedDiscreteSpace<Agent, repast::StrictBorders, repast::SimpleAdder<Agent> >* space){
@@ -68,6 +75,9 @@ void Agent::move(repast::SharedDiscreteSpace<Agent, repast::StrictBorders, repas
 	
 	//move the agent
 	space->moveTo(agentId,agentNewLoc);
-
 }
 
+/* Serializable Agent Package Data */
+AgentPackage::AgentPackage(){ }
+AgentPackage::AgentPackage(int _id, int _rank, int _type, int _currentRank, int _agentType, bool _isSatisfied):
+id(_id), rank(_rank), type(_type), currentRank(_currentRank), agentType(_type), isSatisfied(_isSatisfied){ }

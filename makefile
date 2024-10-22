@@ -4,7 +4,7 @@ include ./env
 create_folders:
 	mkdir -p objects
 	mkdir -p bin
-
+	mkdir -p outputs
 .PHONY: clean_compiled_files
 clean_compiled_files:
 	rm -f ./objects/*.o
@@ -14,7 +14,7 @@ clean_compiled_files:
 clean:
 	rm -rf objects
 	rm -rf bin
-
+	rm –rf outputs
 .PHONY: compile
 compile: clean_compiled_files
 	$(MPICXX) $(REPAST_HPC_DEFINES) $(BOOST_INCLUDE) $(REPAST_HPC_INCLUDE) -I./include -c ./src/Main.cpp -o ./objects/Main.o
